@@ -258,13 +258,20 @@ def create_video_player(video_data):
     
     return None
 
+# def format_duration(seconds):
+#     """Format duration in seconds to MM:SS"""
+#     if not seconds:
+#         return "Unknown"
+#     minutes = seconds // 60
+#     seconds = seconds % 60
+#     return f"{minutes}:{seconds:02d}"
 def format_duration(seconds):
-    """Format duration in seconds to MM:SS"""
-    if not seconds:
+    if seconds is None or not isinstance(seconds, (int, float)):
         return "Unknown"
-    minutes = seconds // 60
-    seconds = seconds % 60
+    minutes = int(seconds) // 60
+    seconds = int(seconds) % 60
     return f"{minutes}:{seconds:02d}"
+
 
 def main():
     st.markdown('<h1 class="main-header">🎬 YouTube Search & Player</h1>', unsafe_allow_html=True)
